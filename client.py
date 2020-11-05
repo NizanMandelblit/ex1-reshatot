@@ -13,9 +13,11 @@ while True:
     queryToServer=input()
     if queryToServer=='exit':
         break
-    s.sendto(str.encode(queryToServer), (serverIP, serverPort))
-    data, addr = s.recvfrom(1024)
-    print(str(data), addr)
+    s.sendto(queryToServer.encode(), (serverIP, int(serverPort)))
+    retLine, addrServer = s.recvfrom(1024)
+    splittedLine=retLine.decode().split(",")
+    retIp=splittedLine[1]
+    print(str(retIp))
 
 s.close()
 
