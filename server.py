@@ -1,9 +1,9 @@
 import socket
 import sys
 import time
+
 time_start = time.time()
 seconds = 0
-minutes = 0
 myPort = sys.argv[1]
 parentIP = sys.argv[2]
 parentPort = sys.argv[3]
@@ -22,7 +22,7 @@ while True:
 		lineSplit=x.split(",")
 		if ipRequest.decode()==lineSplit[0]:
 			ttl=lineSplit[2]
-			seconds = int(time.time() - time_start) - minutes * 60
+			seconds = int(time.time() - time_start)
 			print("seconds:"+str(seconds))
 			if int(ttl)>=(int(seconds)):
 				retLine=x
