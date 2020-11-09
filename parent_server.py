@@ -24,7 +24,8 @@ while True:
 		if ipRequest.decode()==lineSplit[0]:
 			if len(lineSplit)== 3: # static
 				retLine=x
-			else: #dynamic
+				break
+			else:  # learned from parent
 				ttl=lineSplit[2]
 				savedAt = float(lineSplit[3])
 				seconds = int(time.time() - savedAt)
@@ -35,14 +36,15 @@ while True:
 					print("too much time is spent!")
 					retLine=None
 
-	#asking the parent server if its not found in the cache file
+	#  asking the parent server if its not found in the cache file
 	if retLine==None:
 		s.sendto(ipRequest,(parentIP,int(parentPort)))
 		retLine,addrParentServer=s.recvfrom(1024) # we learn retLine from the parent server
 		retLine = retLine.decode()
-		retLine += "," + str(time.time())
+		retLine = retLine[:len(retLine) - 1]
+		retLine += "," + str(int(time.time())) + "\n" # ? "\n"
 		#splitedLine=retLine.split(",")
-		f.write('\n'+retLine)
+		f.write(retLine) # always at the end of the file
 		f.close()
 	s.sendto(retLine.encode(), addrClient)
 

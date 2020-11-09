@@ -1,2 +1,3 @@
 www.google.co.il,8.8.8.8,300
-mail.google.co.il,9.9.9.9,240
+mail.google.co.il,9.9.9.9,100
+www.facebook.co.il,2.2.2.2,300,1604944623
