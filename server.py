@@ -41,8 +41,15 @@ while True:
 		s.sendto(ipRequest,(parentIP,int(parentPort)))
 		retLine,addrParentServer=s.recvfrom(1024) # we learn retLine from the parent server
 		retLine = retLine.decode()
-		retLine = retLine[:len(retLine) - 1]
-		retLine += "," + str(int(time.time())) + "\n" # ? "\n"
+		splittedRetLine = retLine.split(",")
+		if len(splittedRetLine) == 3:
+			retLine = retLine[:len(retLine)]
+			retLine += "," + str(int(time.time())) + "\n" # ? "\n"
+		else:  # there is "time.time() already and we need to replace it
+			splittedRetLine[3] = str(int(time.time())) + "\n"
+			retLine = splittedRetLine[0] + "," + splittedRetLine[1] + "," + splittedRetLine[2] + "," + splittedRetLine[3]
+		# retLine = retLine[:len(retLine) - 1]
+		# retLine += "," + str(int(time.time())) + "\n" # ? "\n"
 		#splitedLine=retLine.split(",")
 		f.write(retLine) # always at the end of the file
 		f.close()
