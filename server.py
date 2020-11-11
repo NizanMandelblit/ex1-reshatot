@@ -43,7 +43,7 @@ while True:
 		retLine = retLine.decode()
 		splittedRetLine = retLine.split(",")
 		if len(splittedRetLine) == 3:
-			retLine = retLine[:len(retLine)]
+			retLine = retLine[:len(retLine) - 1]
 			retLine += "," + str(int(time.time())) + "\n" # ? "\n"
 		else:  # there is "time.time() already and we need to replace it
 			splittedRetLine[3] = str(int(time.time())) + "\n"

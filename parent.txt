@@ -1,5 +1,2 @@
 www.google.co.il,8.8.8.8,300
 mail.google.co.il,9.9.9.9,100
-www.facebook.co.il,2.2.2.2,300,1605004090
-hello,1.1.1,25,1605005988
-hellow,1.1.2,25,1605006002
