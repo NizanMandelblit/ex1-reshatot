@@ -29,11 +29,11 @@ while True:
 				ttl=lineSplit[2]
 				savedAt = float(lineSplit[3])
 				seconds = int(time.time() - savedAt)
-				print("seconds:"+str(seconds))
+				#print("seconds:"+str(seconds))
 				if int(ttl)>= seconds:
 					retLine=x
 				else:
-					print("too much time is spent!")
+					#print("too much time is spent!")
 					retLine=None
 
 	#  asking the parent server if its not found in the cache file
